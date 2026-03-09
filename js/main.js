@@ -546,25 +546,7 @@ function updateNavDots(activeSectionIndex) {
   });
 }
 
-// ============================================================
-// EFECTO DE TILT SUTIL EN EL SÍMBOLO DE INTRO
-//    El símbolo sigue levemente al cursor para dar profundidad
-// ============================================================
-const introSymbol = document.querySelector('.elements-symbol');
-if (introSymbol) {
-  document.addEventListener('mousemove', (e) => {
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    const dx = (e.clientX - cx) / cx; // -1 a 1
-    const dy = (e.clientY - cy) / cy;
 
-    introSymbol.style.transform = `
-      rotate(${dx * 8}deg)
-      translateX(${dx * 10}px)
-      translateY(${dy * 10}px)
-    `;
-  });
-}
 
 // ============================================================
 // ANIMACIÓN DE NÚMEROS DE ELEMENTO AL ENTRAR
@@ -585,22 +567,7 @@ const sectionObserverForNumbers = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.section').forEach(s => sectionObserverForNumbers.observe(s));
 
-// ============================================================
-// PARALLAX ADICIONAL EN EL SÍMBOLO DE INTRO
-//    Las capas del símbolo se mueven a distintas velocidades
-// ============================================================
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const vh = window.innerHeight;
 
-  // Parallax del símbolo intro (solo cuando está visible)
-  if (scrollY < vh) {
-    const symbol = document.querySelector('.intro-symbol');
-    if (symbol) {
-      symbol.style.transform = `translateY(${scrollY * 0.2}px)`;
-    }
-  }
-}, { passive: true });
 
 // ============================================================
 // EFECTO DE GLITCH SUTIL EN EL TÍTULO AL HACER HOVER
