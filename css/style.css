@@ -431,14 +431,32 @@ body {
    ============================================================ */
 .section-impact {
   background: #070710;
+  position: relative;
+  overflow: hidden;
 }
+/* VIDEO DE FONDO — SECCIÓN IMPACTO */
+.impact-video-bg {
+  position: absolute;
+  inset: 0;
 
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 5%;
+
+  transform: scale(1.6);   /* controla el zoom */
+
+  z-index: 0;
+  pointer-events: none;
+}
 .bg-impact {
   background: radial-gradient(ellipse 100% 100% at 50% 50%,
     rgba(80,30,150,0.3) 0%,
     rgba(20,10,50,0.5) 40%,
     transparent 70%);
   animation: impact-pulse 6s ease-in-out infinite;
+  opacity: 0.05;   /* ↓ esto hace visible el video */
 }
 
 @keyframes impact-pulse {
