@@ -893,6 +893,12 @@ body {
    ============================================================ */
 @media (max-width: 768px) {
 
+    /* AJUSTE VIDEO IMPACTO EN MÓVIL */
+  .impact-video-bg {
+    transform: scale(2.2);
+    object-position: center 65%;
+  }
+
   .element-content {
     grid-template-columns: 1fr;
     padding: 60px 30px;
