@@ -1,11 +1,38 @@
-
 /* ============================================================
    ELEMENTS — LANDING PAGE CINEMATOGRÁFICO
    style.css — Estilos principales
    ============================================================ */
 
 /* ============================================================
-   VARIABLES CSS — Sistema de diseño
+   ÍNDICE DE SECCIONES MODIFICADAS
+   ─────────────────────────────────────────────────────────────
+   [1] VARIABLES CSS
+   [2] RESET Y BASE
+   [3] CURSOR PERSONALIZADO
+   [4] BARRA DE PROGRESO DE SCROLL
+   [5] NAVEGACIÓN LATERAL
+   [6] CANVAS GLOBAL DE PARTÍCULAS
+   [7] OVERLAY DE TRANSICIÓN
+   [8] SECCIONES — BASE
+   [9] CAPAS DE FONDO (parallax)
+   [10] CAPAS DE ILUMINACIÓN
+   [11] CAPAS DE CONTENIDO
+   [12] CANVAS DE ELEMENTO
+   [13] SECCIÓN 1 — INTRO (sin cambios)
+   [14] SECCIÓN 2 — IMPACTO (fondo: video nuevo)
+   [15] SECCIONES DE ELEMENTO — ESTRUCTURA COMÚN
+   [16] SECCIÓN 3 — FUEGO (fondo: video nuevo) ← MODIFICADO
+   [17] SECCIÓN 4 — AGUA (fondo: video nuevo)  ← MODIFICADO
+   [18] SECCIÓN 5 — TIERRA (fondo: video nuevo) ← MODIFICADO
+   [19] SECCIÓN 6 — AIRE (fondo: video nuevo)  ← MODIFICADO
+   [20] SECCIÓN 7 — CIERRE (sin cambios)
+   [21] ANIMACIONES DE ENTRADA
+   [22] RESPONSIVE — MOBILE
+   [23] ACCESIBILIDAD
+   ============================================================ */
+
+/* ============================================================
+   [1] VARIABLES CSS — Sistema de diseño
    ============================================================ */
 :root {
   /* Paleta de colores por elemento */
@@ -45,7 +72,7 @@
 }
 
 /* ============================================================
-   RESET Y BASE
+   [2] RESET Y BASE
    ============================================================ */
 *, *::before, *::after {
   margin: 0;
@@ -67,7 +94,7 @@ body {
 }
 
 /* ============================================================
-   CURSOR PERSONALIZADO
+   [3] CURSOR PERSONALIZADO
    ============================================================ */
 .cursor {
   position: fixed;
@@ -96,7 +123,7 @@ body {
 }
 
 /* ============================================================
-   BARRA DE PROGRESO DE SCROLL
+   [4] BARRA DE PROGRESO DE SCROLL
    ============================================================ */
 .scroll-progress {
   position: fixed;
@@ -116,7 +143,7 @@ body {
 }
 
 /* ============================================================
-   NAVEGACIÓN LATERAL (puntos de sección)
+   [5] NAVEGACIÓN LATERAL (puntos de sección)
    ============================================================ */
 .element-nav {
   position: fixed;
@@ -157,7 +184,7 @@ body {
 .nav-dot.air.active   { background: var(--color-air-glow); }
 
 /* ============================================================
-   CANVAS GLOBAL DE PARTÍCULAS
+   [6] CANVAS GLOBAL DE PARTÍCULAS
    ============================================================ */
 .particles-canvas {
   position: fixed;
@@ -168,7 +195,7 @@ body {
 }
 
 /* ============================================================
-   OVERLAY DE TRANSICIÓN ENTRE SECCIONES
+   [7] OVERLAY DE TRANSICIÓN ENTRE SECCIONES
    ============================================================ */
 .transition-overlay {
   position: fixed;
@@ -181,7 +208,7 @@ body {
 }
 
 /* ============================================================
-   SECCIONES — BASE
+   [8] SECCIONES — BASE
    ============================================================ */
 .section {
   position: relative;
@@ -194,7 +221,7 @@ body {
 }
 
 /* ============================================================
-   CAPAS DE FONDO (parallax layers)
+   [9] CAPAS DE FONDO (parallax layers)
    ============================================================ */
 .bg-layer {
   position: absolute;
@@ -206,7 +233,7 @@ body {
 }
 
 /* ============================================================
-   CAPAS DE ILUMINACIÓN
+   [10] CAPAS DE ILUMINACIÓN
    ============================================================ */
 .light-layer {
   position: absolute;
@@ -216,7 +243,7 @@ body {
 }
 
 /* ============================================================
-   CAPAS DE CONTENIDO
+   [11] CAPAS DE CONTENIDO
    ============================================================ */
 .content-layer {
   position: relative;
@@ -236,7 +263,7 @@ body {
 }
 
 /* ============================================================
-   CANVAS DE ELEMENTO (partículas por elemento)
+   [12] CANVAS DE ELEMENTO (partículas por elemento)
    ============================================================ */
 .element-canvas {
   position: absolute;
@@ -246,23 +273,21 @@ body {
 }
 
 /* ============================================================
-   SECCIÓN 1 — INTRO
+   [13] SECCIÓN 1 — INTRO (sin cambios)
    ============================================================ */
 
-/* ============================================================
-   VIDEO DE FONDO — SECCIÓN INTRO
+/* VIDEO DE FONDO — SECCIÓN INTRO
    El video ocupa todo el fondo del primer panel.
-   Las capas de iluminación y contenido se superponen encima.
-   ============================================================ */
+   Las capas de iluminación y contenido se superponen encima. */
 .intro-video-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* Cubre todo sin deformar */
+  object-fit: cover;
   object-position: center;
-  z-index: 0;              /* Debajo de todas las capas */
-  opacity: 0.55;           /* Penumbra cinematográfica sobre el video */
+  z-index: 0;
+  opacity: 0.55; /* Penumbra cinematográfica sobre el video */
   pointer-events: none;
 }
 
@@ -427,36 +452,34 @@ body {
 }
 
 /* ============================================================
-   SECCIÓN 2 — IMPACTO VISUAL
+   [14] SECCIÓN 2 — IMPACTO (fondo: video nuevo)
    ============================================================ */
 .section-impact {
   background: #070710;
   position: relative;
   overflow: hidden;
 }
-/* VIDEO DE FONDO — SECCIÓN IMPACTO */
+
+/* VIDEO DE FONDO — SECCIÓN IMPACTO (reemplazado por nuevo video) */
 .impact-video-bg {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-  object-position: center 5%;
-
-  transform: scale(1.6);   /* controla el zoom */
-
+  object-position: center;
   z-index: 0;
+  opacity: 0.55; /* Misma opacidad cinematográfica que el panel intro */
   pointer-events: none;
 }
+
 .bg-impact {
   background: radial-gradient(ellipse 100% 100% at 50% 50%,
     rgba(80,30,150,0.3) 0%,
     rgba(20,10,50,0.5) 40%,
     transparent 70%);
   animation: impact-pulse 6s ease-in-out infinite;
-  opacity: 0.05;   /* ↓ esto hace visible el video */
+  opacity: 0.05;
 }
 
 @keyframes impact-pulse {
@@ -526,7 +549,7 @@ body {
 .section-impact.is-active .impact-subtitle { opacity: 1; }
 
 /* ============================================================
-   SECCIONES DE ELEMENTO — ESTRUCTURA COMÚN
+   [15] SECCIONES DE ELEMENTO — ESTRUCTURA COMÚN
    ============================================================ */
 .element-content {
   display: grid;
@@ -622,10 +645,26 @@ body {
 }
 
 /* ============================================================
-   SECCIÓN 3 — FUEGO
+   [16] SECCIÓN 3 — FUEGO (fondo: video nuevo) ← MODIFICADO
+   VIDEO DE FONDO añadido con .element-video-bg
+   igual que .intro-video-bg en el panel 1
    ============================================================ */
 .section-fire {
   background: var(--color-fire-dark);
+}
+
+/* Video de fondo compartido — paneles fuego, agua, tierra, aire
+   Misma estructura y comportamiento que .intro-video-bg */
+.element-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* Cubre todo sin deformar */
+  object-position: center;
+  z-index: 0;              /* Debajo de todas las capas */
+  opacity: 0.55;           /* Penumbra cinematográfica, igual al panel intro */
+  pointer-events: none;
 }
 
 .bg-fire {
@@ -655,7 +694,8 @@ body {
 .section-fire .element-number { color: rgba(255,80,0,0.12); }
 
 /* ============================================================
-   SECCIÓN 4 — AGUA
+   [17] SECCIÓN 4 — AGUA (fondo: video nuevo) ← MODIFICADO
+   Usa .element-video-bg (definida arriba en [16])
    ============================================================ */
 .section-water {
   background: var(--color-water-dark);
@@ -686,7 +726,8 @@ body {
 .section-water .element-number { color: rgba(0,100,200,0.12); }
 
 /* ============================================================
-   SECCIÓN 5 — TIERRA
+   [18] SECCIÓN 5 — TIERRA (fondo: video nuevo) ← MODIFICADO
+   Usa .element-video-bg (definida arriba en [16])
    ============================================================ */
 .section-earth {
   background: var(--color-earth-dark);
@@ -711,7 +752,8 @@ body {
 .section-earth .element-number { color: rgba(80,130,40,0.12); }
 
 /* ============================================================
-   SECCIÓN 6 — AIRE
+   [19] SECCIÓN 6 — AIRE (fondo: video nuevo) ← MODIFICADO
+   Usa .element-video-bg (definida arriba en [16])
    ============================================================ */
 .section-air {
   background: var(--color-air-dark);
@@ -743,7 +785,7 @@ body {
 .section-air .element-number { color: rgba(150,200,240,0.12); }
 
 /* ============================================================
-   SECCIÓN 7 — CIERRE
+   [20] SECCIÓN 7 — CIERRE (sin cambios)
    ============================================================ */
 .section-close {
   background: #030308;
@@ -869,7 +911,7 @@ body {
 }
 
 /* ============================================================
-   ANIMACIONES DE ENTRADA DE SECCIÓN (scroll trigger)
+   [21] ANIMACIONES DE ENTRADA DE SECCIÓN (scroll trigger)
    ============================================================ */
 .section .content-layer {
   opacity: 0;
@@ -889,14 +931,18 @@ body {
 }
 
 /* ============================================================
-   RESPONSIVE — MOBILE
+   [22] RESPONSIVE — MOBILE
    ============================================================ */
 @media (max-width: 768px) {
 
-    /* AJUSTE VIDEO IMPACTO EN MÓVIL */
+  /* Ajuste video impacto en móvil */
   .impact-video-bg {
-    transform: scale(2.2);
-    object-position: center 65%;
+    object-position: center;
+  }
+
+  /* Ajuste video elementos en móvil */
+  .element-video-bg {
+    object-position: center;
   }
 
   .element-content {
@@ -938,7 +984,7 @@ body {
 }
 
 /* ============================================================
-   UTILIDADES DE ACCESIBILIDAD
+   [23] UTILIDADES DE ACCESIBILIDAD
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
