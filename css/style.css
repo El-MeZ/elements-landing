@@ -479,7 +479,7 @@ body {
 .impact-line-1,
 .impact-line-2,
 .impact-line-3 {
-  font-family: var(--font-display);
+  font-family: 'Inter', sans-serif;
   font-size: clamp(50px, 12vw, 120px);
   font-weight: 300;
   color: rgba(255,255,255,0.9);
