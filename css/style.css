@@ -61,10 +61,9 @@
   --color-gold:          #C9A84C;
   --color-white:         #FFFFFF;
 
-  /* Tipografía */
-  --font-display:  'Cormorant Garamond', Georgia, serif;
-  --font-body:     'Rajdhani', sans-serif;
-  --font-meta:     'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;     /* títulos grandes */
+  --font-body: 'Inter', sans-serif;        /* texto normal */
+  --font-meta: 'Inter', sans-serif;        /* labels pequeños */    
 
   /* Transiciones */
   --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -568,12 +567,16 @@ body {
   align-items: center;
 }
 
+/* NUMERACIÓN — AHORA VISIBLE */
 .element-number {
-  font-family: var(--font-display);
-  font-size: 80px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.08);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(60px, 10vw, 120px);
+  font-weight: 700;
+
+  color: rgba(255,255,255,0.15); /* ← antes era 0.08 (muy invisible) */
+
   line-height: 1;
+  letter-spacing: 0.1em;
 }
 
 .element-track {
@@ -598,23 +601,32 @@ body {
   gap: 16px;
 }
 
+/* TITULO PRINCIPAL — ESTILO MODERNO (CAMBIO FUERTE) */
 .element-name {
   font-family: var(--font-display);
-  font-size: clamp(48px, 8vw, 80px);
-  font-weight: 300;
-  letter-spacing: 0.2em;
+  font-size: clamp(48px, 8vw, 90px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1;
-  color: rgba(255,255,255,0.9);
+
+  color: white;
+
+  text-shadow:
+    0 0 20px rgba(255,255,255,0.2),
+    0 0 40px rgba(255,255,255,0.1);
 }
 
+/* KEYWORDS — MÁS VISIBLES Y PRO */
 .element-keywords {
-  font-family: var(--font-meta);
-  font-size: 11px;
-  letter-spacing: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+
+  color: rgba(255,255,255,0.6);
+
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -689,10 +701,32 @@ body {
   75%     { opacity: 0.95; }
 }
 
-.section-fire .element-name   { color: var(--color-fire-secondary); text-shadow: 0 0 40px rgba(255,100,0,0.4); }
-.section-fire .highlight-line { color: var(--color-fire-primary); }
-.section-fire .element-number { color: rgba(255,80,0,0.12); }
+/* EFECTO TEXTO — FUEGO (CORREGIDO Y FUNCIONAL) */
+.section-fire .element-name {
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display);
+  font-weight: 700; /* más impacto */
 
+  background: linear-gradient(
+    90deg,
+    #FF4500,
+    #FF8C00,
+    #FF6B00,
+    #FF8C00,
+    #FF4500
+  );
+
+  background-size: 300%;
+
+  /* 🔥 CLAVE PARA QUE FUNCIONE EL GRADIENTE */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: fire-gradient 6s ease infinite;
+
+  text-shadow: 0 0 30px rgba(255,100,0,0.5);
+}
 /* ============================================================
    [17] SECCIÓN 4 — AGUA (fondo: video nuevo) ← MODIFICADO
    Usa .element-video-bg (definida arriba en [16])
