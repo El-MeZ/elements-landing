@@ -6,7 +6,21 @@
   <title>ELEMENTS — Una experiencia interna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;600;700&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
+
+  <!--
+    TIPOGRAFÍAS — SISTEMA POR ELEMENTO
+    ─────────────────────────────────────────────────────────
+    INTRO      → Cinzel Decorative   (monumental, clásico grabado en piedra)
+    IMPACTO    → Bebas Neue          (condensado, impacto tipográfico puro)
+    FUEGO      → Dela Gothic One     (bold sólido, expansivo, presencia masiva)
+    AGUA       → Cormorant Garamond  (elegante, fluido, sereno)
+    TIERRA     → Playfair Display    (sólido, orgánico, confiable)
+    AIRE       → Josefin Sans        (ligero, geométrico, etéreo)
+    META/BODY  → Inter               (limpio, neutro, legible)
+    ─────────────────────────────────────────────────────────
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Bebas+Neue&family=Dela+Gothic+One&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Josefin+Sans:ital,wght@0,100;0,300;0,400;1,100;1,300&family=Inter:wght@100;200;300;400&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -31,9 +45,9 @@
   <!-- ============================================================
        SECCIÓN 1 — INTRO
        Fondo: video original sin modificar
+       Tipografía: Cinzel Decorative — monumental, grabado en piedra
        ============================================================ -->
   <section class="section section-intro" id="section-0" data-element="intro">
-    <!-- Video de fondo — loop silencioso, panel intro original -->
     <video class="intro-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1772981766/WhatsApp_Video_2026-03-08_at_11.46.53_AM_nv7zgu.mp4" type="video/mp4" />
     </video>
@@ -62,18 +76,15 @@
 
   <!-- ============================================================
        SECCIÓN 2 — IMPACTO
-       Fondo: reemplazado por video de impacto nuevo
+       Fondo: video nuevo
+       Tipografía: Bebas Neue — condensado, impacto tipográfico puro
        ============================================================ -->
   <section class="section section-impact" id="section-1" data-element="impact">
-
-    <!-- Video de fondo — panel impacto (nuevo) -->
     <video class="impact-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1774044591/WhatsApp_Video_2026-03-20_at_6.58.58_PM_crevvg.mp4" type="video/mp4" />
     </video>
-
     <div class="bg-layer bg-impact" data-parallax="0.4"></div>
     <div class="light-layer light-impact"></div>
-
     <div class="content-layer centered">
       <div class="impact-text">
         <div class="impact-line-1">La energía</div>
@@ -83,46 +94,40 @@
         <div class="impact-subtitle">Siempre estuvo dentro.</div>
       </div>
     </div>
-
   </section>
 
   <!-- ============================================================
        SECCIÓN 3 — FUEGO
-       Fondo: reemplazado por video del elemento fuego
+       Fondo: video nuevo
+       Tipografía: Dela Gothic One — bold masivo, expansivo
+       Número 01: glow naranja animado
        ============================================================ -->
   <section class="section section-fire" id="section-2" data-element="fire">
-
-    <!-- Video de fondo — panel fuego (nuevo) -->
     <video class="element-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1774044573/WhatsApp_Video_2026-03-20_at_6.58.59_PM_uug9so.mp4" type="video/mp4" />
     </video>
-
     <div class="bg-layer bg-fire" data-parallax="0.3"></div>
     <div class="light-layer light-fire"></div>
     <canvas class="element-canvas" id="fire-canvas"></canvas>
     <div class="content-layer element-content">
       <div class="element-header">
-        <div class="element-number">01</div>
+        <div class="element-number element-number--fire">8</div>
         <div class="element-track">Track: IGNITION</div>
       </div>
-      
+      <div class="element-symbol-large fire-symbol">
+        
+      </div>
       <div class="element-title-block">
-        <h2 class="element-name aurora-text">
-          FUEGO
-          <span class="aurora">
-            <span class="aurora__item"></span>
-            <span class="aurora__item"></span>
-            <span class="aurora__item"></span>
-            <span class="aurora__item"></span>
-          </span>
-        </h2>
-        <div class="element-keywords"><span>Pasión</span><span>·</span><span>Energía</span><span>·</span><span>Despertar</span></div>
+        <h2 class="element-name element-name--fire">FUEGO</h2>
+        <div class="element-keywords">
+          <span>Pasión</span><span>·</span><span>Energía</span><span>·</span><span>Despertar</span>
+        </div>
       </div>
       <div class="element-narrative">
         <p>Antes de cualquier cambio<br />hay un momento donde algo dentro de nosotros despierta.</p>
         <p class="em-line">El fuego es pasión.<br />Es energía.<br />Es impulso.</p>
         <p>No es destrucción.</p>
-        <p class="highlight-line">Es ignición.</p>
+        <p class="highlight-line highlight-line--fire">Es ignición.</p>
         <p>El punto donde la energía interior<br />finalmente se enciende.</p>
       </div>
     </div>
@@ -130,99 +135,108 @@
 
   <!-- ============================================================
        SECCIÓN 4 — AGUA
-       Fondo: reemplazado por video del elemento agua
+       Fondo: video nuevo
+       Tipografía: Cormorant Garamond — elegante, fluido, sereno
+       Número 02: glow azul frío animado
        ============================================================ -->
   <section class="section section-water" id="section-3" data-element="water">
-
-    <!-- Video de fondo — panel agua (nuevo) -->
     <video class="element-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1774044536/WhatsApp_Video_2026-03-20_at_6.59.01_PM_gal80n.mp4" type="video/mp4" />
     </video>
-
     <div class="bg-layer bg-water" data-parallax="0.3"></div>
     <div class="light-layer light-water"></div>
     <canvas class="element-canvas" id="water-canvas"></canvas>
     <div class="content-layer element-content">
       <div class="element-header">
-        <div class="element-number">02</div>
+        <div class="element-number element-number--water">2</div>
         <div class="element-track">Track: PRESSURE / FLOW</div>
       </div>
-      
-      <div class="element-title-block">
-        <h2 class="element-name">AGUA</h2>
+      <div class="element-symbol-large water-symbol">
         
+      </div>
+      <div class="element-title-block">
+        <h2 class="element-name element-name--water">AGUA</h2>
+        <div class="element-keywords">
+          <span>Calma</span><span>·</span><span>Adaptación</span><span>·</span><span>Renacimiento</span>
+        </div>
       </div>
       <div class="element-narrative">
         <p>Después de la intensidad del fuego<br />llega el momento de respirar.</p>
         <p class="em-line">El agua transforma la energía.</p>
         <p>Fluye.<br />Se adapta.<br />Se mueve.</p>
-        <p class="highlight-line">La presión se convierte en movimiento.</p>
+        <p class="highlight-line highlight-line--water">La presión se convierte en movimiento.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
        SECCIÓN 5 — TIERRA
-       Fondo: reemplazado por video del elemento tierra
+       Fondo: video nuevo
+       Tipografía: Playfair Display — sólido, orgánico, confiable
+       Número 03: glow verde tierra animado
        ============================================================ -->
   <section class="section section-earth" id="section-4" data-element="earth">
-
-    <!-- Video de fondo — panel tierra (nuevo) -->
     <video class="element-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1774044513/WhatsApp_Video_2026-03-20_at_6.59.01_PM_1_r30ee9.mp4" type="video/mp4" />
     </video>
-
     <div class="bg-layer bg-earth" data-parallax="0.3"></div>
     <div class="light-layer light-earth"></div>
     <canvas class="element-canvas" id="earth-canvas"></canvas>
     <div class="content-layer element-content">
       <div class="element-header">
-        <div class="element-number">03</div>
+        <div class="element-number element-number--earth">3</div>
         <div class="element-track">Track: CONTROL</div>
       </div>
-   
+      <div class="element-symbol-large earth-symbol">
+        
+      </div>
       <div class="element-title-block">
-        <h2 class="element-name">TIERRA</h2>
-        <div class="element-keywords"><span>Identidad</span><span>·</span><span>Estabilidad</span><span>·</span><span>Dominio</span></div>
+        <h2 class="element-name element-name--earth">TIERRA</h2>
+        <div class="element-keywords">
+          <span>Identidad</span><span>·</span><span>Estabilidad</span><span>·</span><span>Dominio</span>
+        </div>
       </div>
       <div class="element-narrative">
         <p>Después de fuego y agua<br />llega la estabilidad.</p>
         <p class="em-line">La tierra es presencia.</p>
         <p>Aquí la energía deja de ser caos<br />y se convierte en dirección.</p>
-        <p class="highlight-line">Sabes quién eres.</p>
+        <p class="highlight-line highlight-line--earth">Sabes quién eres.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
        SECCIÓN 6 — AIRE
-       Fondo: reemplazado por video del elemento aire
+       Fondo: video nuevo
+       Tipografía: Josefin Sans — ligero, geométrico, etéreo
+       Número 04: glow celeste pálido animado
        ============================================================ -->
   <section class="section section-air" id="section-5" data-element="air">
-
-    <!-- Video de fondo — panel aire (nuevo) -->
     <video class="element-video-bg" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dojb5ylvf/video/upload/v1774044477/WhatsApp_Video_2026-03-20_at_6.59.02_PM_b0eoqs.mp4" type="video/mp4" />
     </video>
-
     <div class="bg-layer bg-air" data-parallax="0.3"></div>
     <div class="light-layer light-air"></div>
     <canvas class="element-canvas" id="air-canvas"></canvas>
     <div class="content-layer element-content">
       <div class="element-header">
-        <div class="element-number">04</div>
+        <div class="element-number element-number--air">1</div>
         <div class="element-track">Track: ASCENSION</div>
       </div>
-
+      <div class="element-symbol-large air-symbol">
+        
+      </div>
       <div class="element-title-block">
-        <h2 class="element-name">AIRE</h2>
-        <div class="element-keywords"><span>Conciencia</span><span>·</span><span>Claridad</span><span>·</span><span>Trascendencia</span></div>
+        <h2 class="element-name element-name--air">AIRE</h2>
+        <div class="element-keywords">
+          <span>Conciencia</span><span>·</span><span>Claridad</span><span>·</span><span>Trascendencia</span>
+        </div>
       </div>
       <div class="element-narrative">
         <p>Cuando la identidad se vuelve clara<br />la energía se expande.</p>
         <p class="em-line">La mente se vuelve ligera.</p>
         <p>La conciencia se abre.</p>
-        <p class="highlight-line">La elevación es comprensión.</p>
+        <p class="highlight-line highlight-line--air">La elevación es comprensión.</p>
       </div>
     </div>
   </section>

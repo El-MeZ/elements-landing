@@ -261,10 +261,10 @@ function initGlobalParticles() {
 function initElementParticles() {
   // Configuración de partículas para cada elemento
   const elementConfigs = {
-    'fire-canvas':  { type: 'sparks',   color: '#FF6B00', count: 60 },
-    'water-canvas': { type: 'drops',    color: '#00B4D8', count: 50 },
-    'earth-canvas': { type: 'dust',     color: '#8BAE4A', count: 70 },
-    'air-canvas':   { type: 'floating', color: '#C8E6FF', count: 55 }
+    'fire-canvas':  { type: 'sparks',   color: '#FF6B00', count: 100 },
+    'water-canvas': { type: 'drops',    color: '#00B4D8', count: 100 },
+    'earth-canvas': { type: 'dust',     color: '#8BAE4A', count: 100 },
+    'air-canvas':   { type: 'floating', color: '#C8E6FF', count: 100 }
   };
 
   Object.entries(elementConfigs).forEach(([canvasId, config]) => {

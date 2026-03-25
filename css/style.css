@@ -4,31 +4,32 @@
    ============================================================ */
 
 /* ============================================================
-   ÍNDICE DE SECCIONES MODIFICADAS
+   ÍNDICE
    ─────────────────────────────────────────────────────────────
-   [1] VARIABLES CSS
-   [2] RESET Y BASE
-   [3] CURSOR PERSONALIZADO
-   [4] BARRA DE PROGRESO DE SCROLL
-   [5] NAVEGACIÓN LATERAL
-   [6] CANVAS GLOBAL DE PARTÍCULAS
-   [7] OVERLAY DE TRANSICIÓN
-   [8] SECCIONES — BASE
-   [9] CAPAS DE FONDO (parallax)
+   [1]  VARIABLES CSS — Sistema de diseño + fuentes por elemento
+   [2]  RESET Y BASE
+   [3]  CURSOR PERSONALIZADO
+   [4]  BARRA DE PROGRESO DE SCROLL
+   [5]  NAVEGACIÓN LATERAL
+   [6]  CANVAS GLOBAL DE PARTÍCULAS
+   [7]  OVERLAY DE TRANSICIÓN
+   [8]  SECCIONES — BASE
+   [9]  CAPAS DE FONDO (parallax)
    [10] CAPAS DE ILUMINACIÓN
    [11] CAPAS DE CONTENIDO
    [12] CANVAS DE ELEMENTO
-   [13] SECCIÓN 1 — INTRO (sin cambios)
-   [14] SECCIÓN 2 — IMPACTO (fondo: video nuevo)
+   [13] SECCIÓN 1 — INTRO (tipografía: Cinzel Decorative)
+   [14] SECCIÓN 2 — IMPACTO (tipografía: Bebas Neue)
    [15] SECCIONES DE ELEMENTO — ESTRUCTURA COMÚN
-   [16] SECCIÓN 3 — FUEGO (fondo: video nuevo) ← MODIFICADO
-   [17] SECCIÓN 4 — AGUA (fondo: video nuevo)  ← MODIFICADO
-   [18] SECCIÓN 5 — TIERRA (fondo: video nuevo) ← MODIFICADO
-   [19] SECCIÓN 6 — AIRE (fondo: video nuevo)  ← MODIFICADO
-   [20] SECCIÓN 7 — CIERRE (sin cambios)
-   [21] ANIMACIONES DE ENTRADA
-   [22] RESPONSIVE — MOBILE
-   [23] ACCESIBILIDAD
+   [16] NÚMEROS CON GLOW ← NUEVO
+   [17] SECCIÓN 3 — FUEGO (tipografía: Dela Gothic One)
+   [18] SECCIÓN 4 — AGUA (tipografía: Cormorant Garamond)
+   [19] SECCIÓN 5 — TIERRA (tipografía: Playfair Display)
+   [20] SECCIÓN 6 — AIRE (tipografía: Josefin Sans)
+   [21] SECCIÓN 7 — CIERRE
+   [22] ANIMACIONES DE ENTRADA
+   [23] RESPONSIVE — MOBILE
+   [24] ACCESIBILIDAD
    ============================================================ */
 
 /* ============================================================
@@ -61,9 +62,22 @@
   --color-gold:          #C9A84C;
   --color-white:         #FFFFFF;
 
-  --font-display: 'Inter', sans-serif;     /* títulos grandes */
-  --font-body: 'Inter', sans-serif;        /* texto normal */
-  --font-meta: 'Inter', sans-serif;        /* labels pequeños */    
+  /*
+    SISTEMA TIPOGRÁFICO POR ELEMENTO
+    ─────────────────────────────────────────────────────────
+    Cada fuente fue elegida para resonar con la personalidad
+    del elemento al que pertenece.
+    ─────────────────────────────────────────────────────────
+  */
+  --font-intro:   'Cinzel Decorative', Georgia, serif;   /* Intro: monumental, eterno */
+  --font-impact:  'Bebas Neue', sans-serif;               /* Impacto: condensado, fuerza */
+  --font-fire:    'Dela Gothic One', sans-serif;          /* Fuego: expansivo, sólido */
+  --font-water:   'Cormorant Garamond', Georgia, serif;   /* Agua: elegante, fluido */
+  --font-earth:   'Playfair Display', Georgia, serif;     /* Tierra: orgánico, confiable */
+  --font-air:     'Josefin Sans', sans-serif;             /* Aire: ligero, geométrico */
+  --font-close:   'Cormorant Garamond', Georgia, serif;   /* Cierre: reflexivo, cálido */
+  --font-body:    'Inter', sans-serif;                    /* Cuerpo: limpio, neutro */
+  --font-meta:    'Inter', sans-serif;                    /* Meta: legible, funcional */
 
   /* Transiciones */
   --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -80,7 +94,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Scroll manual desde JS */
+  scroll-behavior: auto;
   overflow-x: hidden;
 }
 
@@ -89,7 +103,7 @@ body {
   color: var(--color-neutral);
   font-family: var(--font-body);
   overflow-x: hidden;
-  cursor: none; /* Cursor personalizado */
+  cursor: none;
 }
 
 /* ============================================================
@@ -194,7 +208,7 @@ body {
 }
 
 /* ============================================================
-   [7] OVERLAY DE TRANSICIÓN ENTRE SECCIONES
+   [7] OVERLAY DE TRANSICIÓN
    ============================================================ */
 .transition-overlay {
   position: fixed;
@@ -224,7 +238,7 @@ body {
    ============================================================ */
 .bg-layer {
   position: absolute;
-  inset: -20%; /* Margen extra para el movimiento parallax */
+  inset: -20%;
   background-size: cover;
   background-position: center;
   will-change: transform;
@@ -272,12 +286,12 @@ body {
 }
 
 /* ============================================================
-   [13] SECCIÓN 1 — INTRO (sin cambios)
+   [13] SECCIÓN 1 — INTRO
+   Tipografía: Cinzel Decorative — monumental, grabado en piedra
+   Objetivo: el título ELEMENTS debe sentirse eterno y sagrado
    ============================================================ */
 
-/* VIDEO DE FONDO — SECCIÓN INTRO
-   El video ocupa todo el fondo del primer panel.
-   Las capas de iluminación y contenido se superponen encima. */
+/* Video de fondo — intro original */
 .intro-video-bg {
   position: absolute;
   inset: 0;
@@ -286,7 +300,7 @@ body {
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  opacity: 0.55; /* Penumbra cinematográfica sobre el video */
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -313,61 +327,40 @@ body {
   50%       { transform: scale(1.05) rotate(1deg); opacity: 0.7; }
 }
 
-/* Iluminación intro */
 .light-intro {
   background:
     radial-gradient(ellipse 60% 40% at 50% 60%, rgba(255,200,100,0.06) 0%, transparent 70%),
     radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 100%);
 }
 
-/* Símbolo central intro */
-.intro-symbol {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  animation: symbol-appear 2s ease-out both;
-}
-
-.elements-symbol {
-  width: 100px;
-  height: 100px;
-  animation: symbol-rotate 30s linear infinite;
-  filter: drop-shadow(0 0 20px rgba(200,150,80,0.3));
-}
-
-.symbol-fire  { animation: pulse-fire 3s ease-in-out infinite; }
-.symbol-water { animation: pulse-fire 3s ease-in-out infinite 0.75s; }
-.symbol-earth { animation: pulse-fire 3s ease-in-out infinite 1.5s; }
-.symbol-air   { animation: pulse-fire 3s ease-in-out infinite 2.25s; }
-.symbol-center { animation: pulse-center 4s ease-in-out infinite; }
-
-@keyframes pulse-fire   { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
-@keyframes pulse-center { 0%,100%{opacity:0.2;} 50%{opacity:0.5;} }
-@keyframes symbol-rotate { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-@keyframes symbol-appear {
-  from { opacity:0; transform:scale(0.5) rotate(-30deg); }
-  to   { opacity:1; transform:scale(1) rotate(0deg); }
-}
-
-/* Textos intro */
+/* Label de proyecto — meta texto */
 .project-label {
   font-family: var(--font-meta);
   font-size: 11px;
   font-weight: 200;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 20px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 24px;
 }
 
+/*
+  TÍTULO PRINCIPAL — CINZEL DECORATIVE
+  Monumental, clásico, como si estuviera grabado en mármol.
+  El letter-spacing amplio refuerza la monumentalidad.
+  El text-shadow crea profundidad dorada sutil.
+*/
 .title-main {
-  font-family: var(--font-display);
-  font-size: clamp(70px, 15vw, 150px);
-  font-weight: 300;
-  letter-spacing: 0.3em;
+  font-family: var(--font-intro);
+  font-size: clamp(48px, 11vw, 120px);
+  font-weight: 900;
+  letter-spacing: 0.25em;
   line-height: 1;
   color: rgba(255,255,255,0.95);
-  text-shadow: 0 0 80px rgba(200,150,80,0.2);
+  text-shadow:
+    0 0 60px rgba(200,160,80,0.25),
+    0 0 120px rgba(200,160,80,0.1),
+    0 2px 4px rgba(0,0,0,0.5);
   margin-bottom: 50px;
 }
 
@@ -376,8 +369,9 @@ body {
   margin: 0 auto 50px;
 }
 
+/* Cuerpo intro — Cormorant para elegancia narrativa */
 .intro-body p {
-  font-family: var(--font-display);
+  font-family: var(--font-water); /* Cormorant — el más elegante para párrafos */
   font-size: clamp(16px, 2vw, 22px);
   font-weight: 300;
   line-height: 1.9;
@@ -402,7 +396,7 @@ body {
 .scroll-cta span {
   font-family: var(--font-meta);
   font-size: 10px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.5);
 }
@@ -451,7 +445,9 @@ body {
 }
 
 /* ============================================================
-   [14] SECCIÓN 2 — IMPACTO (fondo: video nuevo)
+   [14] SECCIÓN 2 — IMPACTO
+   Tipografía: Bebas Neue — condensado, impacto puro
+   Objetivo: las palabras deben golpear como un puñetazo visual
    ============================================================ */
 .section-impact {
   background: #070710;
@@ -459,7 +455,7 @@ body {
   overflow: hidden;
 }
 
-/* VIDEO DE FONDO — SECCIÓN IMPACTO (reemplazado por nuevo video) */
+/* Video de fondo — impacto */
 .impact-video-bg {
   position: absolute;
   inset: 0;
@@ -468,7 +464,7 @@ body {
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  opacity: 0.55; /* Misma opacidad cinematográfica que el panel intro */
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -492,27 +488,45 @@ body {
     radial-gradient(circle at 50% 100%, rgba(0,0,0,0.8) 0%, transparent 60%);
 }
 
-/* Texto de impacto */
 .impact-text {
   text-align: center;
   line-height: 1;
 }
 
+/*
+  BEBAS NEUE para el panel de impacto.
+  Ultra condensado, sin serif, peso visual total.
+  Cada línea tiene un tamaño diferente para crear ritmo.
+*/
 .impact-line-1,
 .impact-line-2,
 .impact-line-3 {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(50px, 12vw, 120px);
-  font-weight: 300;
-  color: rgba(255,255,255,0.9);
+  font-family: var(--font-impact); /* Bebas Neue */
+  font-size: clamp(60px, 14vw, 140px);
+  font-weight: 400; /* Bebas solo tiene 400 */
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.92);
   display: block;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.impact-line-2 { font-style: italic; color: rgba(255,255,255,0.5); }
-.impact-line-3 { font-size: clamp(60px, 14vw, 140px); font-weight: 600; }
+/* "no viene" — más pequeña e itálica (simulada con Cormorant) */
+.impact-line-2 {
+  font-family: var(--font-water); /* Cormorant — elegante contraste */
+  font-style: italic;
+  font-size: clamp(40px, 9vw, 90px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+}
+
+/* "de afuera." — la más grande, el golpe final */
+.impact-line-3 {
+  font-size: clamp(70px, 16vw, 160px);
+  letter-spacing: 0.02em;
+}
 
 .impact-divider {
   width: 60px;
@@ -525,16 +539,16 @@ body {
 
 .impact-subtitle {
   font-family: var(--font-meta);
-  font-size: clamp(14px, 2vw, 20px);
-  font-weight: 100;
-  letter-spacing: 6px;
+  font-size: clamp(11px, 1.5vw, 16px);
+  font-weight: 200;
+  letter-spacing: 8px;
   text-transform: uppercase;
   color: rgba(200,180,255,0.5);
   opacity: 0;
   transition: opacity 0.8s ease 0.5s;
 }
 
-/* Cuando la sección está activa, mostrar texto */
+/* Cuando la sección está activa */
 .section-impact.is-active .impact-line-1,
 .section-impact.is-active .impact-line-2,
 .section-impact.is-active .impact-line-3,
@@ -567,22 +581,10 @@ body {
   align-items: center;
 }
 
-/* NUMERACIÓN — AHORA VISIBLE */
-.element-number {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(60px, 10vw, 120px);
-  font-weight: 700;
-
-  color: rgba(255,255,255,0.15); /* ← antes era 0.08 (muy invisible) */
-
-  line-height: 1;
-  letter-spacing: 0.1em;
-}
-
 .element-track {
   font-family: var(--font-meta);
   font-size: 10px;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.3);
 }
@@ -601,32 +603,15 @@ body {
   gap: 16px;
 }
 
-/* TITULO PRINCIPAL — ESTILO MODERNO (CAMBIO FUERTE) */
-.element-name {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 8vw, 90px);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-
-  color: white;
-
-  text-shadow:
-    0 0 20px rgba(255,255,255,0.2),
-    0 0 40px rgba(255,255,255,0.1);
-}
-
-/* KEYWORDS — MÁS VISIBLES Y PRO */
+/* Keywords — más visibles */
 .element-keywords {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-family: var(--font-meta);
+  font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  color: rgba(255,255,255,0.6);
-
+  color: rgba(255,255,255,0.45);
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -636,10 +621,9 @@ body {
 }
 
 .element-narrative p {
-  font-family: var(--font-display);
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(15px, 1.8vw, 19px);
   font-weight: 300;
-  line-height: 2;
+  line-height: 2.1;
   color: rgba(255,255,255,0.55);
   margin-bottom: 24px;
 }
@@ -650,32 +634,160 @@ body {
 }
 
 .element-narrative .highlight-line {
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: clamp(20px, 2.8vw, 30px);
   font-weight: 400;
   color: rgba(255,255,255,0.9);
   font-style: italic;
 }
 
 /* ============================================================
-   [16] SECCIÓN 3 — FUEGO (fondo: video nuevo) ← MODIFICADO
-   VIDEO DE FONDO añadido con .element-video-bg
-   igual que .intro-video-bg en el panel 1
+   [16] NÚMEROS CON GLOW — SISTEMA POR ELEMENTO
+   Cada número brilla con el color de su elemento.
+   Animación de pulso que simula presencia energética.
+   ============================================================ */
+
+/* Base compartida de todos los números */
+.element-number {
+  font-family: var(--font-meta);
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 100; /* Ultra thin para que el glow contraste */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+/* ── FUEGO: número naranja con resplandor de llama ── */
+.element-number--fire {
+  color: rgba(255, 110, 20, 0.9);
+  text-shadow:
+    0 0 10px  rgba(255, 100,  10, 0.8),
+    0 0 30px  rgba(255,  80,   0, 0.6),
+    0 0 70px  rgba(255,  60,   0, 0.4),
+    0 0 120px rgba(200,  40,   0, 0.2);
+  animation: glow-fire 3s ease-in-out infinite;
+}
+
+@keyframes glow-fire {
+  0%, 100% {
+    text-shadow:
+      0 0 10px  rgba(255, 100, 10, 0.8),
+      0 0 30px  rgba(255,  80,  0, 0.6),
+      0 0 70px  rgba(255,  60,  0, 0.4),
+      0 0 120px rgba(200,  40,  0, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 15px  rgba(255, 140, 20, 1.0),
+      0 0 50px  rgba(255, 100,  0, 0.8),
+      0 0 100px rgba(255,  70,  0, 0.5),
+      0 0 160px rgba(200,  40,  0, 0.3);
+  }
+}
+
+/* ── AGUA: número azul con resplandor de profundidad ── */
+.element-number--water {
+  color: rgba(0, 190, 230, 0.9);
+  text-shadow:
+    0 0 10px  rgba(  0, 180, 230, 0.8),
+    0 0 30px  rgba(  0, 140, 210, 0.6),
+    0 0 70px  rgba(  0, 100, 200, 0.4),
+    0 0 120px rgba(  0,  60, 160, 0.2);
+  animation: glow-water 4s ease-in-out infinite;
+}
+
+@keyframes glow-water {
+  0%, 100% {
+    text-shadow:
+      0 0 10px  rgba(  0, 180, 230, 0.8),
+      0 0 30px  rgba(  0, 140, 210, 0.6),
+      0 0 70px  rgba(  0, 100, 200, 0.4),
+      0 0 120px rgba(  0,  60, 160, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 15px  rgba(  0, 210, 255, 1.0),
+      0 0 50px  rgba(  0, 160, 230, 0.8),
+      0 0 100px rgba(  0, 120, 210, 0.5),
+      0 0 160px rgba(  0,  80, 180, 0.3);
+  }
+}
+
+/* ── TIERRA: número verde con resplandor orgánico ── */
+.element-number--earth {
+  color: rgba(140, 190, 70, 0.9);
+  text-shadow:
+    0 0 10px  rgba(120, 180,  60, 0.8),
+    0 0 30px  rgba( 90, 150,  40, 0.6),
+    0 0 70px  rgba( 70, 120,  30, 0.4),
+    0 0 120px rgba( 50,  90,  20, 0.2);
+  animation: glow-earth 5s ease-in-out infinite;
+}
+
+@keyframes glow-earth {
+  0%, 100% {
+    text-shadow:
+      0 0 10px  rgba(120, 180, 60, 0.8),
+      0 0 30px  rgba( 90, 150, 40, 0.6),
+      0 0 70px  rgba( 70, 120, 30, 0.4),
+      0 0 120px rgba( 50,  90, 20, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 15px  rgba(160, 220,  80, 1.0),
+      0 0 50px  rgba(120, 180,  60, 0.8),
+      0 0 100px rgba( 90, 150,  40, 0.5),
+      0 0 160px rgba( 60, 110,  30, 0.3);
+  }
+}
+
+/* ── AIRE: número celeste con resplandor etéreo ── */
+.element-number--air {
+  color: rgba(200, 230, 255, 0.9);
+  text-shadow:
+    0 0 10px  rgba(180, 220, 255, 0.7),
+    0 0 30px  rgba(140, 190, 240, 0.5),
+    0 0 70px  rgba(100, 160, 220, 0.3),
+    0 0 120px rgba( 60, 130, 200, 0.15);
+  animation: glow-air 6s ease-in-out infinite;
+}
+
+@keyframes glow-air {
+  0%, 100% {
+    text-shadow:
+      0 0 10px  rgba(180, 220, 255, 0.7),
+      0 0 30px  rgba(140, 190, 240, 0.5),
+      0 0 70px  rgba(100, 160, 220, 0.3),
+      0 0 120px rgba( 60, 130, 200, 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 20px  rgba(220, 240, 255, 0.9),
+      0 0 60px  rgba(180, 220, 255, 0.7),
+      0 0 120px rgba(140, 190, 240, 0.4),
+      0 0 200px rgba(100, 160, 220, 0.2);
+  }
+}
+
+/* ============================================================
+   [17] SECCIÓN 3 — FUEGO
+   Video de fondo nuevo
+   Tipografía: Dela Gothic One — bold masivo, expansivo
+   El título FUEGO debe tener presencia física, casi táctil.
    ============================================================ */
 .section-fire {
   background: var(--color-fire-dark);
 }
 
-/* Video de fondo compartido — paneles fuego, agua, tierra, aire
-   Misma estructura y comportamiento que .intro-video-bg */
+/* Video de fondo compartido — paneles elemento */
 .element-video-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* Cubre todo sin deformar */
+  object-fit: cover;
   object-position: center;
-  z-index: 0;              /* Debajo de todas las capas */
-  opacity: 0.55;           /* Penumbra cinematográfica, igual al panel intro */
+  z-index: 0;
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -701,35 +813,66 @@ body {
   75%     { opacity: 0.95; }
 }
 
-/* EFECTO TEXTO — FUEGO (CORREGIDO Y FUNCIONAL) */
-.section-fire .element-name {
-  -webkit-text-fill-color: transparent;
-  font-family: var(--font-display);
-  font-weight: 700; /* más impacto */
-
-  background: linear-gradient(
-    90deg,
-    #FF4500,
-    #FF8C00,
-    #FF6B00,
-    #FF8C00,
-    #FF4500
+/*
+  DELA GOTHIC ONE — Ultra bold, sin serif, expansivo.
+  La fuente más pesada del sistema, igual que el fuego:
+  presencia total, no pide permiso.
+*/
+.element-name--fire {
+  font-family: var(--font-fire);
+  font-size: clamp(52px, 9vw, 100px);
+  font-weight: 400; /* Dela Gothic solo tiene 400 pero es natively ultra bold */
+  letter-spacing: 0.04em;
+  line-height: 1;
+  /* Gradiente naranja-rojo animado */
+  background: linear-gradient(135deg,
+    #FF8C00 0%,
+    #FF4500 40%,
+    #FF6B00 70%,
+    #FF8C00 100%
   );
-
-  background-size: 300%;
-
-  /* 🔥 CLAVE PARA QUE FUNCIONE EL GRADIENTE */
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  animation: fire-gradient 6s ease infinite;
-
-  text-shadow: 0 0 30px rgba(255,100,0,0.5);
+  animation: fire-title-shift 4s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 80, 0, 0.4));
 }
+
+@keyframes fire-title-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Narrativa fuego — Dela Gothic para em-lines */
+.section-fire .element-narrative p {
+  font-family: var(--font-body);
+}
+
+.section-fire .element-narrative .em-line {
+  font-family: var(--font-fire);
+  font-size: clamp(14px, 1.8vw, 18px);
+  letter-spacing: 0.06em;
+  color: rgba(255, 140, 60, 0.8);
+}
+
+/* Highlight line fuego */
+.highlight-line--fire {
+  font-family: var(--font-fire) !important;
+  font-size: clamp(28px, 4vw, 48px) !important;
+  background: linear-gradient(90deg, #FF4500, #FF8C00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255,80,0,0.4));
+}
+
 /* ============================================================
-   [17] SECCIÓN 4 — AGUA (fondo: video nuevo) ← MODIFICADO
-   Usa .element-video-bg (definida arriba en [16])
+   [18] SECCIÓN 4 — AGUA
+   Video de fondo nuevo
+   Tipografía: Cormorant Garamond — elegante, fluido, sereno
+   El título AGUA debe fluir como el agua misma: serif, refinado.
    ============================================================ */
 .section-water {
   background: var(--color-water-dark);
@@ -755,13 +898,50 @@ body {
     radial-gradient(ellipse 100% 40% at 50% 100%, rgba(0,0,0,0.9) 0%, transparent 60%);
 }
 
-.section-water .element-name   { color: var(--color-water-secondary); text-shadow: 0 0 40px rgba(0,180,220,0.4); }
-.section-water .highlight-line { color: var(--color-water-primary); }
-.section-water .element-number { color: rgba(0,100,200,0.12); }
+/*
+  CORMORANT GARAMOND — Serif elegante, alta relación ascendente/descendente.
+  En itálica crea una sensación de movimiento suave, como el agua.
+  Weight 300 para ligereza, contrarrestando el bold del fuego anterior.
+*/
+.element-name--water {
+  font-family: var(--font-water);
+  font-size: clamp(60px, 11vw, 120px);
+  font-weight: 300;
+  font-style: italic; /* La itálica es la clave: fluye */
+  letter-spacing: 0.15em;
+  line-height: 1;
+  color: var(--color-water-secondary);
+  text-shadow:
+    0 0 30px rgba(0, 180, 220, 0.5),
+    0 0 80px rgba(0, 140, 200, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.section-water .element-narrative p {
+  font-family: var(--font-water);
+  font-size: clamp(16px, 1.9vw, 20px);
+}
+
+.section-water .element-narrative .em-line {
+  font-family: var(--font-water);
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 22px);
+  color: rgba(0, 200, 240, 0.8);
+}
+
+.highlight-line--water {
+  font-family: var(--font-water) !important;
+  font-style: italic !important;
+  font-size: clamp(22px, 3.2vw, 36px) !important;
+  color: var(--color-water-secondary) !important;
+  text-shadow: 0 0 20px rgba(0, 180, 220, 0.4) !important;
+}
 
 /* ============================================================
-   [18] SECCIÓN 5 — TIERRA (fondo: video nuevo) ← MODIFICADO
-   Usa .element-video-bg (definida arriba en [16])
+   [19] SECCIÓN 5 — TIERRA
+   Video de fondo nuevo
+   Tipografía: Playfair Display — sólido, orgánico, arraigado
+   El título TIERRA debe sentirse firme y confiable.
    ============================================================ */
 .section-earth {
   background: var(--color-earth-dark);
@@ -781,13 +961,49 @@ body {
     radial-gradient(ellipse 80% 30% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 60%);
 }
 
-.section-earth .element-name   { color: var(--color-earth-secondary); text-shadow: 0 0 40px rgba(100,160,50,0.4); }
-.section-earth .highlight-line { color: var(--color-earth-primary); }
-.section-earth .element-number { color: rgba(80,130,40,0.12); }
+/*
+  PLAYFAIR DISPLAY — Serif con alto contraste fino/grueso.
+  Bold para dar peso. La tierra no se mueve: ocupa espacio.
+  Sin cursiva, sin adornos: solo presencia.
+*/
+.element-name--earth {
+  font-family: var(--font-earth);
+  font-size: clamp(54px, 9.5vw, 105px);
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--color-earth-secondary);
+  text-shadow:
+    0 0 30px rgba(120, 180, 60, 0.4),
+    0 0 80px rgba(90, 150, 40, 0.2),
+    0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.section-earth .element-narrative p {
+  font-family: var(--font-earth);
+  font-size: clamp(15px, 1.8vw, 19px);
+}
+
+.section-earth .element-narrative .em-line {
+  font-family: var(--font-earth);
+  font-style: italic;
+  color: rgba(160, 210, 90, 0.8);
+}
+
+.highlight-line--earth {
+  font-family: var(--font-earth) !important;
+  font-weight: 700 !important;
+  font-size: clamp(24px, 3.5vw, 40px) !important;
+  color: var(--color-earth-secondary) !important;
+  text-shadow: 0 0 20px rgba(120, 180, 60, 0.4) !important;
+}
 
 /* ============================================================
-   [19] SECCIÓN 6 — AIRE (fondo: video nuevo) ← MODIFICADO
-   Usa .element-video-bg (definida arriba en [16])
+   [20] SECCIÓN 6 — AIRE
+   Video de fondo nuevo
+   Tipografía: Josefin Sans — ligero, geométrico, etéreo
+   El título AIRE debe sentirse como si pudiera desaparecer.
    ============================================================ */
 .section-air {
   background: var(--color-air-dark);
@@ -814,12 +1030,67 @@ body {
     radial-gradient(ellipse 100% 40% at 50% 100%, rgba(0,5,20,0.8) 0%, transparent 60%);
 }
 
-.section-air .element-name   { color: var(--color-air-primary); text-shadow: 0 0 40px rgba(180,220,255,0.4); }
-.section-air .highlight-line { color: var(--color-air-secondary); }
-.section-air .element-number { color: rgba(150,200,240,0.12); }
+/*
+  JOSEFIN SANS — Geométrico, delgado, mucho letter-spacing.
+  Weight 100 para máxima ligereza: el aire no pesa.
+  El spacing amplio crea sensación de expansión, de apertura.
+*/
+.element-name--air {
+  font-family: var(--font-air);
+  font-size: clamp(56px, 10vw, 110px);
+  font-weight: 100; /* Ultra thin — el aire es casi invisible */
+  letter-spacing: 0.4em; /* Mucho espacio — expansión */
+  line-height: 1;
+  color: var(--color-air-primary);
+  text-shadow:
+    0 0 20px rgba(180, 220, 255, 0.6),
+    0 0 60px rgba(140, 190, 240, 0.3),
+    0 0 120px rgba(100, 160, 220, 0.15);
+  animation: air-title-breathe 6s ease-in-out infinite;
+}
+
+@keyframes air-title-breathe {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(180, 220, 255, 0.6),
+      0 0 60px rgba(140, 190, 240, 0.3),
+      0 0 120px rgba(100, 160, 220, 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(220, 240, 255, 0.8),
+      0 0 100px rgba(180, 220, 255, 0.5),
+      0 0 200px rgba(140, 190, 240, 0.25);
+  }
+}
+
+.section-air .element-narrative p {
+  font-family: var(--font-air);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.section-air .element-narrative .em-line {
+  font-family: var(--font-air);
+  font-style: italic;
+  font-weight: 100;
+  color: rgba(200, 230, 255, 0.8);
+  letter-spacing: 0.06em;
+}
+
+.highlight-line--air {
+  font-family: var(--font-air) !important;
+  font-weight: 100 !important;
+  letter-spacing: 0.12em !important;
+  font-size: clamp(20px, 3vw, 32px) !important;
+  color: var(--color-air-secondary) !important;
+  text-shadow: 0 0 20px rgba(180, 220, 255, 0.5) !important;
+}
 
 /* ============================================================
-   [20] SECCIÓN 7 — CIERRE (sin cambios)
+   [21] SECCIÓN 7 — CIERRE
+   Sin modificar, conservado original
+   Tipografía: Cormorant Garamond — reflexivo, cálido
    ============================================================ */
 .section-close {
   background: #030308;
@@ -846,18 +1117,17 @@ body {
     radial-gradient(ellipse 100% 30% at 50% 100%, rgba(0,0,0,0.9) 0%, transparent 60%);
 }
 
-/* Textos cierre */
 .close-eyebrow {
   font-family: var(--font-meta);
   font-size: 11px;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.3);
   margin-bottom: 40px;
 }
 
 .close-statement {
-  font-family: var(--font-display);
+  font-family: var(--font-close);
   font-size: clamp(32px, 5vw, 60px);
   font-weight: 300;
   color: rgba(255,255,255,0.8);
@@ -871,7 +1141,7 @@ body {
 }
 
 .close-subtitle {
-  font-family: var(--font-display);
+  font-family: var(--font-close);
   font-size: clamp(18px, 2.5vw, 28px);
   font-style: italic;
   color: rgba(255,255,255,0.4);
@@ -879,7 +1149,7 @@ body {
 }
 
 .close-body {
-  font-family: var(--font-display);
+  font-family: var(--font-close);
   font-size: clamp(15px, 1.8vw, 20px);
   font-weight: 300;
   line-height: 2;
@@ -887,7 +1157,6 @@ body {
   margin-bottom: 60px;
 }
 
-/* Lista de elementos en cierre */
 .elements-list {
   display: flex;
   justify-content: center;
@@ -897,7 +1166,7 @@ body {
 }
 
 .el-item {
-  font-family: var(--font-display);
+  font-family: var(--font-close);
   font-size: clamp(20px, 3vw, 32px);
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -917,7 +1186,6 @@ body {
 .section-close.is-active .el-item:nth-child(3) { transition-delay: 0.5s; }
 .section-close.is-active .el-item:nth-child(4) { transition-delay: 0.7s; }
 
-/* Líneas finales */
 .close-final {
   display: flex;
   flex-direction: column;
@@ -933,19 +1201,18 @@ body {
   color: rgba(255,255,255,0.25);
 }
 
-/* Logo final */
 .close-logo {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 8vw, 80px);
-  font-weight: 300;
+  font-family: var(--font-intro); /* Cinzel — cierra el círculo con la intro */
+  font-size: clamp(28px, 5vw, 60px);
+  font-weight: 400;
   letter-spacing: 0.5em;
-  color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.06);
   text-transform: uppercase;
   margin-top: 20px;
 }
 
 /* ============================================================
-   [21] ANIMACIONES DE ENTRADA DE SECCIÓN (scroll trigger)
+   [22] ANIMACIONES DE ENTRADA DE SECCIÓN (scroll trigger)
    ============================================================ */
 .section .content-layer {
   opacity: 0;
@@ -965,16 +1232,11 @@ body {
 }
 
 /* ============================================================
-   [22] RESPONSIVE — MOBILE
+   [23] RESPONSIVE — MOBILE
    ============================================================ */
 @media (max-width: 768px) {
 
-  /* Ajuste video impacto en móvil */
-  .impact-video-bg {
-    object-position: center;
-  }
-
-  /* Ajuste video elementos en móvil */
+  .impact-video-bg,
   .element-video-bg {
     object-position: center;
   }
@@ -991,34 +1253,38 @@ body {
     gap: 8px;
   }
 
-  .element-number { font-size: 50px; }
-  .element-symbol-large { font-size: 60px; }
+  /* Números más pequeños en móvil pero siguen brillando */
+  .element-number { font-size: clamp(60px, 18vw, 100px); }
 
-  .element-name { font-size: clamp(40px, 10vw, 60px); }
+  .element-symbol-large { font-size: 60px; }
   .element-narrative { grid-column: 1; }
 
   .content-layer { padding: 40px 24px; }
 
-  .title-main { font-size: clamp(50px, 18vw, 80px); }
+  /* Título intro más ajustado en móvil */
+  .title-main { font-size: clamp(36px, 14vw, 70px); }
+
+  /* AIRE: reducir letter-spacing en móvil */
+  .element-name--air { letter-spacing: 0.2em; }
 
   .elements-list { gap: 16px; }
-
   .element-nav { right: 14px; }
-
   .close-final span { font-size: 10px; letter-spacing: 3px; }
 
   .impact-line-1,
-  .impact-line-2,
-  .impact-line-3 { font-size: clamp(36px, 14vw, 70px); }
+  .impact-line-3 { font-size: clamp(44px, 16vw, 80px); }
+  .impact-line-2 { font-size: clamp(32px, 11vw, 60px); }
 }
 
 @media (max-width: 480px) {
   .element-nav { display: none; }
   .element-content { padding: 50px 20px; }
+  .element-name--air { letter-spacing: 0.12em; font-size: clamp(44px, 13vw, 70px); }
+  .element-name--fire { font-size: clamp(46px, 14vw, 72px); }
 }
 
 /* ============================================================
-   [23] UTILIDADES DE ACCESIBILIDAD
+   [24] UTILIDADES DE ACCESIBILIDAD
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
